@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openerp>
+	<data>
+<!-- Vista formulario -->
+	<record model="ir.ui.view" id="tipo_implicados_form_view">
+		<field name="name">tipo_implicados.form</field>
+		<field name="model">cein.tipo_implicados</field>
+		<field name="arch" type="xml">
+			<form string="tipo_implicados Form">
+				<sheet>					
+					<group col="2">						
+						<field name="name" placeholder="Nombre " />		
+						<field name="displayname" placeholder="Nombre " />														
+						<field name="activo" />											
+					</group>
+					<notebook>
+					  <page string="Descripcion">						
+						<field name="descripcion" placeholder="Descripcion opcional" />
+					  </page>
+					</notebook>	
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+<!-- Vista de arbol para el objeto -->
+	<record model="ir.ui.view" id="tipo_implicados_tree_view">
+		<field name="name">tipo_implicados.tree</field>
+		<field name="model">cein.tipo_implicados</field>
+		<field name="arch" type="xml">
+				<tree string="Status Tree">
+							
+							<field name="displayname" />	
+							<field name="descripcion" />
+				</tree>
+		</field>
+	</record>	
+	
+	<record model="ir.actions.act_window" id="tipo_implicados_list_action">
+          <field name="name">Tipo de Implicados</field>
+          <field name="res_model">cein.tipo_implicados</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">Crea el primer elemento de este catálogo</p>
+		</field>
+        </record>
+
+<!-- Creo El Menu -->	
+		<menuitem id="menu_tipo_implicados" name="Tipo de Implicados" parent="cein_submenu_configuracion" action="tipo_implicados_list_action" />
+	</data>
+</openerp>

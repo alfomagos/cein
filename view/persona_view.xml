@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openerp>
+	<data>
+<!-- Vista formulario -->
+	<record model="ir.ui.view" id="persona_form_view">
+		<field name="name">persona.form</field>
+		<field name="model">cein.persona</field>
+		<field name="arch" type="xml">
+			<form string="persona Form">
+				<sheet>					
+					<group col="2">						
+						<field name="name" placeholder="Nombre " />		
+						<field name="displayname" placeholder="Nombre " />								
+						<field name="nacionalidad_id" placeholder="Nacionalidad" />											
+						<field name="escolaridad_id"  />											
+						<field name="estadocivil_id"  />											
+						<field name="ocupacion_id"  />											
+						<field name="profesion_id"  />											
+						<field name="raza_id"  />											
+						<field name="tipo_documento_id"  />											
+
+						<field name="activo" />											
+					</group>
+					<notebook>
+					  <page string="Descripcion">						
+						<field name="descripcion" placeholder="Descripcion opcional" />
+					  </page>
+					</notebook>	
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+<!-- Vista de arbol para el objeto -->
+	<record model="ir.ui.view" id="persona_tree_view">
+		<field name="name">persona.tree</field>
+		<field name="model">cein.persona</field>
+		<field name="arch" type="xml">
+				<tree string="Status Tree">
+							<field name="nacionalidad_id" />			
+							<field name="displayname" />	
+							<field name="descripcion" />
+							<field name="escolaridad_id"  />											
+							<field name="estadocivil_id"  />											
+							<field name="ocupacion_id"  />											
+							<field name="profesion_id"  />											
+							<field name="raza_id"  />											
+							<field name="tipo_documento_id"  />											
+				</tree>
+		</field>
+	</record>	
+	
+	<record model="ir.actions.act_window" id="persona_list_action">
+          <field name="name">persona</field>
+          <field name="res_model">cein.persona</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">Crea el primer elemento de este catálogo</p>
+		</field>
+        </record>
+
+<!-- Creo El Menu -->	
+		<menuitem id="menu_persona" name="persona" parent="cein_submenu_configuracion" action="persona_list_action" />
+	</data>
+</openerp>

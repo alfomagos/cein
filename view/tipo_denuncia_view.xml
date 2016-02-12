@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openerp>
+	<data>
+<!-- Vista formulario para el objeto phase -->
+	<record model="ir.ui.view" id="cein.tipo_denuncia_form_view">
+		<field name="name">tipo_denuncia.form</field>
+		<field name="model">cein.tipo_denuncia</field>
+		<field name="arch" type="xml">
+			<form string="tipo_denuncia Form">
+				<sheet>					
+					<group col="2">						
+						<field name="name" placeholder="Nombre del tipo de denuncia" />								
+						<field name="codlegado" placeholder="Codigo legado del tipo_denuncia" />											
+						<field name="activo" />											
+					</group>
+					<group colspan="4" >
+							<group cols="2">	
+								<field name="creador" />	
+								<field name="creacion_date" />							
+							</group>
+							<group cols="2">	
+								<field name="modificador" />	
+								<field name="modificacion_date" />
+							</group>
+					</group>
+					<notebook>
+					  <page string="Descripcion">						
+						<field name="descripcion" placeholder="Descripcion opcional" />
+					  </page>
+					</notebook>	
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+<!-- Vista de arbol para el objeto phase -->
+	<record model="ir.ui.view" id="cein.tipo_denuncia_tree_view">
+		<field name="name">tipo_denuncia.tree</field>
+		<field name="model">cein.tipo_denuncia</field>
+		<field name="arch" type="xml">
+				<tree string="Status Tree">
+							<field name="codlegado" />
+							<field name="name" />	
+							<field name="descripcion" />
+				</tree>
+		</field>
+	</record>	
+	
+	
+<!-- Esta es la accion que maneja todas las vistass-->
+	<record model="ir.actions.act_window" id="tipo_denuncia_list_action">
+		<field name="name">Tipo de Denuncia</field>
+		<field name="res_model">cein.tipo_denuncia</field>
+		<field name="view_type">form</field> <!-- creo que esta es la vista que se muestra por defecto -->	
+		<field name="view_mode">tree,form</field> <!-- aqui se colocan todos los tipos de vista que va a tener este objeto -->	
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">Crea el primer elemento de este cátalogo</p>
+		</field>
+	</record>
+	
+<!-- Creo El Menu -->	
+		<menuitem id="main_menu_cein" name="CEIN"  /> 	
+		<menuitem id="cein_submenu_configuracion" name="Configuracion" parent="main_menu_cein"  />
+	<menuitem id="menu_tipo_denuncia" name="Tipo de Denuncia" parent="cein_submenu_configuracion" action="tipo_denuncia_list_action" />
+
+	</data>
+</openerp>

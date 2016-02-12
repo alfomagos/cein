@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<openerp>
+	<data>
+<!-- Vista formulario -->
+	<record model="ir.ui.view" id="denuncia_form_view">
+		<field name="name">denuncia.form</field>
+		<field name="model">cein.denuncia</field>
+		<field name="arch" type="xml">
+			<form string="denuncia Form">
+				<sheet>					
+					<group col="2">						
+						<field name="name" placeholder="Codigo Oficial " />		
+						<field name="code_temporal" placeholder="Codigo Temporal " />													
+						<field name="tipo_denuncia_id" placeholder="Tipo de Denuncia " />												
+						<field name="activo" />											
+					</group>
+					<notebook>
+					  <page string="Descripcion">	
+					  <group colspan="2" col="1">
+            				<field name="relacion_id"/>
+          			  </group>		
+					  </page>
+					</notebook>	
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+<!-- Vista de arbol para el objeto -->
+	<record model="ir.ui.view" id="denuncia_tree_view">
+		<field name="name">denuncia.tree</field>
+		<field name="model">cein.denuncia</field>
+		<field name="arch" type="xml">
+				<tree string="Status Tree">
+							<field name="name" />			
+							<field name="code_temporal" />	
+							<field name="tipo_denuncia_id" />	
+							
+				</tree>
+		</field>
+	</record>	
+	
+	<record model="ir.actions.act_window" id="denuncia_list_action">
+          <field name="name">denuncia</field>
+          <field name="res_model">cein.denuncia</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">Crea el primer elemento de este catálogo</p>
+		</field>
+        </record>
+
+<!-- Creo El Menu -->			
+		<menuitem id="cein_submenu_denuncias" name="Ingreso de Denuncias" parent="main_menu_cein"  />
+		<menuitem id="menu_denuncia" name="denuncia" parent="cein_submenu_denuncias" action="denuncia_list_action" />
+
+	<record model="ir.ui.view" id="cein.implicado_tree">
+      <field name="name">cein.implicado.tree</field>
+      <field name="model">cein.implicado</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+        <tree string="Implicados">
+          <field name="nombre"/>
+          <field name="relacion"/>          
+        </tree>
+      </field>
+    </record>
+
+   
+
+    <record model="ir.ui.view" id="cein.implicado_form_view">
+		<field name="name">cein.implicado.form</field>
+		<field name="model">cein.implicado</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Implicados">
+				<sheet>					
+					<group col="2">						
+						<field name="nombre"/>
+            			<field name="relacion"/>            
+					</group>					
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+
+
+
+
+
+
+	</data>
+</openerp>
